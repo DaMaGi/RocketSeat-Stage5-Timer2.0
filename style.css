@@ -1,0 +1,151 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto Mono', monospace;
+}
+
+:root {
+    --stroke-color: #323238;
+    --bg-color: #ebe7bf;
+    --sound-btn-bg: #ddd8ce;
+    --active-color: #02799D;
+    --active-fill: #ebe7bf;
+    --shadow-color: #666;
+
+    --h1-size: 8.785rem;
+}
+
+body {
+    display: flex;
+    height: 100vh;
+    padding: 5%;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--bg-color);
+}
+
+.hide {
+    display: none;
+}
+
+main {
+    display: grid;
+    grid-template-areas:
+        "timer timer timer timer"
+        "play watch less more";
+    row-gap: 2rem;
+    column-gap: 1rem;
+}
+
+h1 {
+    grid-area: timer;
+    color: var(--stroke-color);
+    font-weight: 500;
+    font-size: var(--h1-size);
+    text-align: center;
+}
+
+.play,
+.pause {
+    grid-area: play;
+}
+
+.stop,
+.setTime {
+    grid-area: watch;
+}
+
+.decreaseTime {
+    grid-area: less;
+}
+
+.increaseTime {
+    grid-area: more;
+}
+
+aside {
+    display: grid;
+    grid-template-areas:
+        "1fr 1fr"
+        "1fr 1fr";
+    gap: 2rem;
+    margin-left: 12rem;
+}
+
+button {
+    cursor: pointer;
+}
+
+.colorTheme {
+    background-color: var(--bg-color);
+    border: none;
+    outline: none;
+    position: absolute;
+    top: 3rem;
+    right: 3rem;
+}
+
+.decimalSecs {
+    font-size: calc(var(--h1-size) / 2)
+}
+
+.timerControls {
+    background-color: var(--bg-color);
+    border: none;
+    outline: none;
+}
+
+.timerControls svg {
+    stroke: var(--stroke-color);
+    filter: drop-shadow(0px 2px 2px var(--shadow-color));
+}
+
+.bgSoundBtn {
+    background-color: var(--sound-btn-bg);
+    border-radius: 24px;
+    border: none;
+    height: 9.5rem;
+    outline: none;
+    padding: 1.5rem;
+    width: 8.625rem;
+    box-shadow: 0 2px 2px var(--shadow-color);
+}
+
+.bgSoundBtn:hover {
+    border: 2px solid var(--stroke-color);
+    box-shadow: 0 2px 8px var(--shadow-color);
+}
+
+.volumeControl {
+    margin-top: 2rem;
+    width: 100%;
+    filter: brightness(0.6) hue-rotate(330deg) saturate(0.6);
+}
+
+/* class for background noise buttons and their svg path attribute */
+.active {
+    background-color: var(--active-color);
+    fill: var(--active-fill);
+}
+
+@media(max-width: 1024px) {
+    body {
+        flex-direction: column;
+    }
+
+    aside {
+        margin: 3rem 0 0 0;
+        column-gap: 5rem;
+    }
+}
+
+@media(max-width: 510px) {
+    :root {
+        --h1-size: 5rem;
+    }
+
+    aside {
+        column-gap: 2rem;
+    }
+}
